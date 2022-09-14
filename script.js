@@ -124,7 +124,6 @@ const start = () => {
     }
     count--;
   }, 1000);
-  // display.classList.add("active");
   
 };
 
