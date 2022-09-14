@@ -79,10 +79,12 @@ const gameOver = () => {
   display.classList.add("inactive");
   // show result
   resultModal.innerHTML += `
-    <h1>Finished!</h1>
-    <p>You took: <span class="bold">${timeTaken}</span> seconds</p>
-    <p>You made <span class="bold red">${errorCount}</span> mistakes</p>
-    <button onclick="closeModal()">Close</button>
+    
+        <h1>Finished!</h1>
+        <p>You took: <span class="bold">${timeTaken}</span> seconds</p>
+        <p>You made <span class="bold red">${errorCount}</span> mistakes</p>
+        <button onclick="closeModal()">Close</button>
+    
   `;
 
   addHistory(questionText, timeTaken, errorCount);
@@ -114,15 +116,14 @@ const start = () => {
     if (count == 0) {
       // -------------- START TYPING -----------------
       document.addEventListener("keydown", typeController);
-      countdownOverlay.style.display = "flex";
+      countdownOverlay.style.display = "none";
       display.classList.remove("inactive");
       clearInterval(startCountdown);
-      countdownOverlay.style.display = "none";
       startTime = new Date().getTime();
     }
     count--;
   }, 1000);
-  
+  // display.classList.add("active");
   
 };
 
@@ -138,5 +139,5 @@ setInterval(() => {
   const timeSpent = (currentTime - startTime) / 1000;
 
 
-  document.getElementById("show-time").innerHTML = `${startTime ? timeSpent : 0} seconds`;
+  document.getElementById("show-time").innerHTML = `${startTime ? Math.floor(timeSpent): 0} seconds`;
 }, 1000);
